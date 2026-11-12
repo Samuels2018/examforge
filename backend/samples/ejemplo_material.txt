@@ -1,0 +1,31 @@
+Tema 1. Bases de datos relacionales
+
+Una base de datos relacional organiza la información en tablas formadas por filas y columnas. Cada tabla representa una entidad y las relaciones entre entidades se expresan mediante claves foráneas. La clave primaria identifica de forma única cada fila de una tabla.
+
+Los índices aceleran las búsquedas y los filtros, aunque añaden coste de escritura y ocupan espacio. Un índice compuesto debe declararse en el orden en que se usan sus columnas.
+
+Las transacciones agrupan operaciones que deben ejecutarse de forma atómica. Sus propiedades se resumen en ACID: atomicidad, consistencia, aislamiento y durabilidad.
+
+El problema N+1 aparece cuando se ejecuta una consulta para obtener una colección y después una consulta adicional por cada elemento. Se corrige con joins, carga anticipada o consultas por lotes.
+
+SQL permite definir restricciones como NOT NULL, UNIQUE y FOREIGN KEY para proteger la integridad de los datos.
+
+Tema 2. Índices y rendimiento
+
+Un índice B-tree es adecuado para búsquedas por igualdad y por rango. Para saber si se está usando, se puede analizar la consulta con EXPLAIN o EXPLAIN ANALYZE.
+
+Conviene indexar columnas usadas en WHERE, JOIN y ORDER BY, pero no conviene indexar indiscriminadamente todas las columnas. Las consultas que aplican funciones sobre la columna indexada pueden impedir el uso del índice.
+
+Tema 3. Modelado y normalización
+
+La normalización reduce la redundancia y las anomalías de actualización. La primera forma normal exige valores atómicos. La segunda forma normal elimina dependencias parciales de una clave compuesta. La tercera forma normal elimina dependencias transitivas.
+
+La desnormalización puede ser útil para optimizar lecturas, pero debe justificarse y controlarse para evitar inconsistencias.
+
+Tema 4. Transacciones y concurrencia
+
+El nivel de aislamiento determina qué anomalías puede observar una transacción concurrente. READ COMMITTED evita lecturas sucias, mientras que SERIALIZABLE ofrece la garantía más estricta a cambio de menor concurrencia.
+
+Un bloqueo pesimista reserva el recurso antes de modificarlo. Un bloqueo optimista comprueba una versión o marca de tiempo al confirmar y falla si otro proceso la cambió.
+
+Los deadlocks ocurren cuando dos transacciones esperan recursos que la otra retiene. Una estrategia habitual es adquirir los bloqueos siempre en el mismo orden y mantener las transacciones cortas.
